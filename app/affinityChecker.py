@@ -6,11 +6,11 @@ def readTokenizedFiles():
     frameworkList = []
     scopusList = []
     
-    with open("./data/tokenizedFrameworkData.csv", 'r', encoding = "utf8") as ff:
+    with open("app/data/tokenizedFrameworkData.csv", 'r', encoding = "utf8") as ff:
         dictReaderFramework = DictReader(ff)
         frameworkList = list(dictReaderFramework)
            
-    with open("./data/tokenizedScopusData.csv", 'r', encoding = "utf8") as sf:
+    with open("app/data/tokenizedScopusData.csv", 'r', encoding = "utf8") as sf:
         dictReaderScopus = DictReader(sf)
         scopusList = list(dictReaderScopus)
                 
