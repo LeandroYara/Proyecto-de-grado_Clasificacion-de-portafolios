@@ -23,22 +23,22 @@ def calculateAffinity(frameworkList, scopusList, titles):
     
     for document in frameworkList:
         criterion = document['Criterios']
-        words = document['Words']
+        words = document['Words'].split()
         if criterion not in criteriaDict:
             criteriaDict[criterion] = words
             titles.append(criterion)
         else:
-            for word in words.split():
+            for word in words:
                 criterionWords = criteriaDict[criterion]
                 if word not in criterionWords and word.isalpha():
-                   criteriaDict[criterion] = " ".join([criterionWords, word])
+                   criteriaDict[criterion].append(word)
                    
     for document in scopusList:
         title = document['Title']
         wordsList = document['Words'].split(" ")
         documentDict[title] = {}
         for criterion in criteriaDict:
-            criteriaList = criteriaDict[criterion].split(" ")
+            criteriaList = criteriaDict[criterion]
             common_elements = [element for element in criteriaList if element in wordsList]
             num_criteria_elements = len(criteriaList)
             documentDict[title][criterion] = round((len(common_elements) / num_criteria_elements) * 100, 2)
